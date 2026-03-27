@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="padding: 20px; max-width: 1200px; margin: 0 auto;">
+    <h1 style="color: #fff; text-align: center; margin-bottom: 30px; font-size: 2.5rem;">
+        📊 Painel de Estatísticas do Site
+    </h1>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <!-- Total de Visitas -->
+        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #8b5e34;">
+            <h3 style="color: #d4af37; margin-bottom: 15px; font-size: 1.5rem;">🌐 Total de Visitas</h3>
+            <p style="color: #fff; font-size: 2.5rem; font-weight: bold; margin: 0;">{{ total_visitas }}</p>
+        </div>
+        
+        <!-- Visitas Hoje -->
+        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #8b5e34;">
+            <h3 style="color: #d4af37; margin-bottom: 15px; font-size: 1.5rem;">📅 Visitas Hoje</h3>
+            <p style="color: #fff; font-size: 2.5rem; font-weight: bold; margin: 0;">{{ visitas_hoje }}</p>
+        </div>
+        
+        <!-- IPs Únicos -->
+        <div style="background: rgba(255,255,255,0.1); padding: 25px; border-radius: 15px; text-align: center; border: 2px solid #8b5e34;">
+            <h3 style="color: #d4af37; margin-bottom: 15px; font-size: 1.5rem;">👥 Visitantes Únicos</h3>
+            <p style="color: #fff; font-size: 2.5rem; font-weight: bold; margin: 0;">{{ ips_unicos }}</p>
+        </div>
+    </div>
+    
+    <!-- Visitas por Página -->
+    <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34;">
+        <h2 style="color: #d4af37; margin-bottom: 25px; font-size: 2rem;">📄 Visitas por Página</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+            {% for page_data in visitas_por_pagina %}
+            <div style="background: rgba(0,0,0,0.3); padding: 20px; border-radius: 10px; text-align: center;">
+                <h4 style="color: #fff; margin-bottom: 10px; font-size: 1.2rem;">{{ page_data.page_visited or 'Página Desconhecida' }}</h4>
+                <p style="color: #d4af37; font-size: 1.8rem; font-weight: bold; margin: 0;">{{ page_data.visitas }}</p>
+                <p style="color: #ccc; font-size: 0.9rem; margin: 5px 0 0 0;">visitas</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('home') }}" style="display: inline-block; padding: 12px 30px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 25px; transition: all 0.3s;">
+            🏠 Voltar para Home
+        </a>
+    </div>
+</div>
+{% endblock %}

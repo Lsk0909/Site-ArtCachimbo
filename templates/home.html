@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art&Cachimbo - Cachimbo Raimundão da Jurema</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e Fontes */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        
+        body {
+            background-color: #1a0f00; /* Fundo escuro */
+            color: #f4e4bc;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ url_for('static', filename='textura_madeira.jpg') }}');
+            background-size: cover;
+        }
+
+        /* Header e Logotipo */
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+
+        /* Menu de Navegação com Logo Central */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 0;
+        }
+
+        .logo-container {
+            margin: 0 30px;
+        }
+
+        .logo-container img {
+            max-width: 200px;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+        }
+
+        .nav-btn {
+            background: #4a341b;
+            border: 2px solid #8b5e34;
+            color: #d4af37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: inset 0 0 10px #000;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #5d4326;
+            transform: scale(1.05);
+        }
+
+        /* Hero Section (Banner Central) */
+        .hero {
+            width: 90%;
+            max-width: 1200px;
+            height: 500px;
+            margin: 20px auto;
+            border: 8px solid #3d2b1f;
+            box-shadow: 0 0 30px rgba(0,0,0,1);
+            background-image: url('{{ url_for('static', filename='pg_inc.jpeg') }}'); /* Imagem da oficina */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: flex-end;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rodapé de Informações (Texto sobre a imagem) */
+        .hero-content {
+            background: rgba(0, 0, 0, 0.7);
+            width: 100%;
+            padding: 30px;
+            border-top: 2px solid #8b5e34;
+        }
+
+        .hero-content h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            max-width: 700px;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ccc;
+        }
+
+        .btn-colecao {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: #2a1b12;
+            border: 1px solid #d4af37;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-colecao:hover {
+            background: #d4af37;
+            color: #000;
+        }
+
+        /* Widget de Orçamento */
+        .whatsapp-widget {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: #3d2b1f;
+            border: 1px solid #8b5e34;
+            padding: 10px;
+            font-size: 0.8rem;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        /* Engrenagens Decorativas (Simulação do rodapé) */
+        .gears-footer {
+            height: 60px;
+            background: #22150a;
+            border-top: 5px solid #110904;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{{ url_for('home') }}" class="nav-btn">HOME</a>
+            <a href="{{ url_for('historia') }}" class="nav-btn">HISTÓRIA</a>
+            <a href="{{ url_for('produtos') }}" class="nav-btn">PORTIFOLIO</a>
+            <img src="{{ url_for('static', filename='LgC.jpeg') }}" alt="Logo Central" style="max-width: 200px; margin: 0 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+            <a href="{{ url_for('catalogo') }}" class="nav-btn">CATÁLOGO</a>
+            <a href="{{ url_for('login') }}" class="nav-btn">LOGIN</a>
+            <a href="{{ url_for('register') }}" class="nav-btn">REGISTRAR</a>
+        </nav>
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>ART&CACHIMBO: Onde Tradição e Exclusividade se Encontram</h1>
+            <p>O cachimbo artesanal em madeira nobre, desenvolvido com maestria para proporcionar a melhor experiência. Tradição que atravessa gerações.</p>
+            <a href="{{ url_for('catalogo') }}" class="btn-colecao">Ver Coleção</a>
+        </div>
+
+        <div class="whatsapp-widget">
+            <strong>Orçamento pelo Zap:</strong><br>
+            Cachimbos Exclusivos • 85-98517-9492
+        </div>
+    </main>
+
+    <footer class="gears-footer">
+        <!-- Aqui você inseriria ícones de engrenagens ou SVGs -->
+        <span style="color: #4a341b; font-size: 2rem;">⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️</span>
+    </footer>
+
+</body>
+</html>

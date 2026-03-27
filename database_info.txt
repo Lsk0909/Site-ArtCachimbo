@@ -1,0 +1,88 @@
+BANCO DE DADOS - ART&CACHIMBO
+================================
+
+LOCALIZACAO DO ARQUIVO:
+- Caminho: instance/site.db
+- Tamanho: 28.672 bytes (28 KB)
+- Tipo: SQLite Database
+
+FORMAS DE ACESSAR:
+
+1. VIA SCRIPT PYTHON:
+   python view_database.py
+   - Mostra usuarios, visitas e tentativas de login
+   - Interface amigavel no terminal
+
+2. VIA SQLITE3 (Linha de comando):
+   sqlite3 instance/site.db
+   - Comandos SQL diretamente
+   - .tables para ver tabelas
+   - SELECT * FROM user; para ver usuarios
+
+3. VIA FERRAMENTAS GRAFICAS:
+   - DB Browser for SQLite (gratuito)
+   - DBeaver (gratuito)
+   - SQLiteStudio (gratuito)
+
+TABELAS DISPONIVEIS:
+
+1. USER (usuarios cadastrados)
+   - id: INTEGER PRIMARY KEY
+   - nome: TEXT NOT NULL
+   - email: TEXT UNIQUE NOT NULL
+   - username: TEXT UNIQUE NOT NULL
+   - senha: TEXT NOT NULL
+
+2. SITEVISIT (visitas ao site)
+   - id: INTEGER PRIMARY KEY
+   - ip_address: TEXT NOT NULL
+   - user_agent: TEXT
+   - visit_time: DATETIME NOT NULL
+   - page_visited: TEXT NOT NULL
+   - session_id: TEXT
+
+3. LOGINLOG (tentativas de login)
+   - id: INTEGER PRIMARY KEY
+   - username: TEXT NOT NULL
+   - ip_address: TEXT NOT NULL
+   - user_agent: TEXT
+   - login_time: DATETIME NOT NULL
+   - success: BOOLEAN NOT NULL
+
+4. PRODUCT (produtos do catalogo)
+   - id: INTEGER PRIMARY KEY
+   - categoria: TEXT NOT NULL
+   - nome: TEXT NOT NULL
+   - descricao: TEXT NOT NULL
+   - preco: REAL NOT NULL
+   - imagem: TEXT
+   - forma_pagamento: TEXT NOT NULL
+   - link_pagamento: TEXT NOT NULL
+
+COMANDOS SQL UTEIS:
+
+-- Ver todos os usuarios
+SELECT * FROM user;
+
+-- Ver todos os emails
+SELECT email FROM user;
+
+-- Contar usuarios
+SELECT COUNT(*) FROM user;
+
+-- Ver ultimas visitas
+SELECT * FROM sitevisit ORDER BY visit_time DESC LIMIT 10;
+
+-- Ver tentativas de login
+SELECT * FROM loginlog ORDER BY login_time DESC;
+
+-- Exportar emails para CSV
+.mode csv
+.output emails.csv
+SELECT email FROM user;
+.output stdout
+
+BACKUP DO BANCO:
+- Copie o arquivo instance/site.db
+- Salve em local seguro
+- Faca backup regularmente

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; margin: 40px auto; max-width: 1200px; padding: 20px;">
+    <h2 style="color: #fff; font-size: 2.5rem; margin-bottom: 20px;">PORTIFOLIO</h2>
+    <p style="color: #ccc; font-size: 1.2rem; margin-bottom: 40px; line-height: 1.6;">
+        Nossos produtos: Cachimbos Raimundão da Jurema - Tradição e qualidade em cada peça.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px;">
+        <!-- Imagem 1 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='1.jpeg') }}" alt="Cachimbo 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Tradicional</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Design clássico com madeira nobre, perfeito para cerimônias tradicionais.</p>
+        </div>
+        
+        <!-- Imagem 2 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='2.jpeg') }}" alt="Cachimbo 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Exclusivo</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Peça única com detalhes artesanais e acabamento premium.</p>
+        </div>
+        
+        <!-- Imagem 3 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='3.jpeg') }}" alt="Cachimbo 3" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Cerimonial</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Ideal para rituais especiais, com simbologia sagrada.</p>
+        </div>
+        
+        <!-- Imagem 4 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='4.jpeg') }}" alt="Cachimbo 4" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Master</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Obra-prima artesanal, com detalhes exclusivos.</p>
+        </div>
+        
+        <!-- Imagem 5 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='5.jpeg') }}" alt="Cachimbo 5" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Espiritual</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Conexão profunda com as tradições espirituais.</p>
+        </div>
+        
+        <!-- Imagem 6 -->
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s, box-shadow 0.3s;">
+            <img src="{{ url_for('static', filename='6.jpeg') }}" alt="Cachimbo 6" style="width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
+            <h3 style="color: #d4af37; font-size: 1.3rem; margin-bottom: 10px;">Cachimbo Premium</h3>
+            <p style="color: #fff; font-size: 0.95rem; line-height: 1.5;">Qualidade superior, madeira selecionada e acabamento perfeito.</p>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 40px;">
+        <a href="{{ url_for('home') }}" style="display: inline-block; padding: 15px 40px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 25px; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3);">
+            🏠 Voltar para Home
+        </a>
+    </div>
+</div>
+
+<style>
+    .grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+</style>
+{% endblock %}

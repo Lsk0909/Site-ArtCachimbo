@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="text-align: center; margin: 40px auto; max-width: 1200px; padding: 20px;">
+    <h1 style="color: #fff; font-size: 2.5rem; margin-bottom: 30px;">⚙️ Painel Administrativo</h1>
+    <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 40px;">
+        Bem-vindo, {{ session.username }}! Gerencie seu site de forma centralizada.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 40px;">
+        <!-- Estatísticas de Visitas -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Estatísticas</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Visualize visitas, usuários e métricas do site</p>
+            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Ver Estatísticas
+            </a>
+        </div>
+        
+        <!-- Gerenciar Usuários -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">👥</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Usuários</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Gerencie contas e exporte emails</p>
+            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Gerenciar Usuários
+            </a>
+        </div>
+        
+        <!-- Gerenciar Portfolio -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">🖼️</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Portfolio</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Adicione e gerencie imagens do portfolio</p>
+            <a href="{{ url_for('produtos') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Ver Portfolio
+            </a>
+        </div>
+        
+        <!-- Logs de Acesso -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">📋</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Logs</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Visualize logs de login e atividades</p>
+            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Ver Logs
+            </a>
+        </div>
+        
+        <!-- Configurações -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">⚙️</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Configurações</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Configure o site e preferências</p>
+            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Configurações
+            </a>
+        </div>
+        
+        <!-- Backup -->
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
+            <div style="font-size: 3rem; margin-bottom: 15px;">💾</div>
+            <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Backup</h3>
+            <p style="color: #fff; margin-bottom: 20px;">Faça backup do banco de dados</p>
+            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+                Fazer Backup
+            </a>
+        </div>
+    </div>
+    
+    <!-- Informações do Administrador -->
+    <div style="background: rgba(212, 175, 55, 0.2); border: 1px solid #d4af37; padding: 20px; border-radius: 10px; margin-bottom: 30px;">
+        <h3 style="color: #d4af37; margin-bottom: 15px;">🔐 Informações da Sessão</h3>
+        <p style="color: #fff; margin: 5px 0;"><strong>Usuário:</strong> {{ session.username }}</p>
+        <p style="color: #fff; margin: 5px 0;"><strong>Nível:</strong> Administrador</p>
+        <p style="color: #fff; margin: 5px 0;"><strong>Acesso:</strong> Total ao sistema</p>
+    </div>
+    
+    <div style="text-align: center;">
+        <a href="{{ url_for('home') }}" style="display: inline-block; padding: 15px 40px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 25px; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin: 10px;">
+            🏠 Voltar para Home
+        </a>
+        <a href="{{ url_for('logout') }}" style="display: inline-block; padding: 15px 40px; background: #e74c3c; color: #fff; text-decoration: none; font-weight: bold; border-radius: 25px; font-size: 1.1rem; transition: all 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.3); margin: 10px;">
+            🚪 Sair
+        </a>
+    </div>
+</div>
+
+<style>
+    .grid-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+    }
+</style>
+{% endblock %}

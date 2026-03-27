@@ -12,8 +12,8 @@
         <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
             <div style="font-size: 3rem; margin-bottom: 15px;">📊</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Estatísticas</h3>
-            <p style="color: #fff; margin-bottom: 20px;">Visualize visitas, usuários e métricas do site</p>
-            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+            <p style="color: #fff; margin-bottom: 20px;">Visualize visitas e métricas do site</p>
+            <a href="{{ url_for('api_contador') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Ver Estatísticas
             </a>
         </div>
@@ -23,7 +23,7 @@
             <div style="font-size: 3rem; margin-bottom: 15px;">👥</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Usuários</h3>
             <p style="color: #fff; margin-bottom: 20px;">Gerencie contas e exporte emails</p>
-            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+            <a href="{{ url_for('home') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Gerenciar Usuários
             </a>
         </div>
@@ -32,7 +32,7 @@
         <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
             <div style="font-size: 3rem; margin-bottom: 15px;">🖼️</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Portfolio</h3>
-            <p style="color: #fff; margin-bottom: 20px;">Adicione e gerencie imagens do portfolio</p>
+            <p style="color: #fff; margin-bottom: 20px;">Visualize as imagens do portfolio</p>
             <a href="{{ url_for('produtos') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Ver Portfolio
             </a>
@@ -42,8 +42,8 @@
         <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; border: 2px solid #8b5e34; transition: transform 0.3s;">
             <div style="font-size: 3rem; margin-bottom: 15px;">📋</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Logs</h3>
-            <p style="color: #fff; margin-bottom: 20px;">Visualize logs de login e atividades</p>
-            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+            <p style="color: #fff; margin-bottom: 20px;">Visualize logs de atividades</p>
+            <a href="{{ url_for('api_contador') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Ver Logs
             </a>
         </div>
@@ -53,7 +53,7 @@
             <div style="font-size: 3rem; margin-bottom: 15px;">⚙️</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Configurações</h3>
             <p style="color: #fff; margin-bottom: 20px;">Configure o site e preferências</p>
-            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+            <a href="{{ url_for('home') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Configurações
             </a>
         </div>
@@ -63,7 +63,7 @@
             <div style="font-size: 3rem; margin-bottom: 15px;">💾</div>
             <h3 style="color: #d4af37; font-size: 1.5rem; margin-bottom: 15px;">Backup</h3>
             <p style="color: #fff; margin-bottom: 20px;">Faça backup do banco de dados</p>
-            <a href="{{ url_for('admin_visitas') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
+            <a href="{{ url_for('home') }}" style="display: inline-block; padding: 10px 20px; background: #d4af37; color: #000; text-decoration: none; font-weight: bold; border-radius: 20px; transition: all 0.3s;">
                 Fazer Backup
             </a>
         </div>

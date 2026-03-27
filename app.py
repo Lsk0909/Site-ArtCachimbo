@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime, date
+from functools import wraps
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -23,6 +25,56 @@ class Product(db.Model):
     imagem = db.Column(db.String(200), nullable=True)
     forma_pagamento = db.Column(db.String(200), nullable=False)
     link_pagamento = db.Column(db.String(200), nullable=False)
+
+class SiteVisit(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    ip_address = db.Column(db.String(45), nullable=False)
+    visit_date = db.Column(db.Date, default=date.today, nullable=False)
+    page_visited = db.Column(db.String(200), nullable=False)
+    visit_time = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+
+@app.before_request
+def track_visit():
+    # Ignorar arquivos estáticos e requisições internas
+    if request.endpoint and request.endpoint.startswith('static'):
+        return
+    
+    # Registrar visita apenas para requisições GET principais
+    if request.method == 'GET' and request.endpoint:
+        ip_address = request.remote_addr
+        today = date.today()
+        page = request.endpoint or request.path
+        
+        # Verificar se este IP já visitou hoje
+        existing_visit = SiteVisit.query.filter_by(
+            ip_address=ip_address,
+            visit_date=today
+        ).first()
+        
+        # Se não visitou hoje, registrar nova visita
+        if not existing_visit:
+            visit = SiteVisit(
+                ip_address=ip_address,
+                page_visited=page,
+                visit_date=today
+            )
+            db.session.add(visit)
+            db.session.commit()
+
+@app.route('/api/contador')
+def api_contador():
+    total_visitas = SiteVisit.query.count()
+    return {'total_visitas': total_visitas}
+
+@app.route('/admin')
+def admin_dashboard():
+    return render_template('admin_dashboard.html', session=session)
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    flash('Você saiu do sistema!')
+    return redirect(url_for('home'))
 
 @app.route('/')
 def home():
@@ -63,6 +115,7 @@ def login():
         senha = request.form['senha']
         user = User.query.filter_by(username=username).first()
         if user and check_password_hash(user.senha, senha):
+            session['username'] = user.username
             flash('Login bem-sucedido!')
             return redirect(url_for('home'))
         else:

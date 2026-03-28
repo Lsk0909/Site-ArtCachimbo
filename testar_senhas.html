@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testar Senhas - Art&Cachimbo</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1a0f00; color: #f4e4bc; }
+        .container { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; }
+        button { background: #d4af37; color: #000; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin: 10px; }
+        .result { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; margin: 10px 0; }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 TESTAR SENHAS DOS ADMINISTRADORES</h1>
+        
+        <button onclick="verUsuarios()">👥 Ver Usuários Cadastrados</button>
+        <button onclick="testarSenhas()">🔐 Testar Senhas</button>
+        <button onclick="criarAdmins()">👑 Criar Admins (se não existirem)</button>
+        <button onclick="limparTudo()">🗑️ Limpar Tudo</button>
+        
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        function verUsuarios() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            let html = '<div class="result"><h3>👥 Usuários Cadastrados:</h3>';
+            
+            if (users.length === 0) {
+                html += '<p class="error">❌ Nenhum usuário encontrado!</p>';
+            } else {
+                users.forEach((user, index) => {
+                    html += `<p><strong>${index + 1}.</strong> ${user.nome}<br>`;
+                    html += `Username: ${user.username}<br>`;
+                    html += `Email: ${user.email}<br>`;
+                    html += `Senha (codificada): ${user.senha}<br>`;
+                    html += `Senha (decodificada): ${atob(user.senha)}<br>`;
+                    html += `Admin: ${user.isAdmin ? 'Sim' : 'Não'}</p><hr>`;
+                });
+            }
+            
+            html += '</div>';
+            document.getElementById('resultado').innerHTML = html;
+        }
+        
+        function testarSenhas() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            let html = '<div class="result"><h3>🔐 Teste de Senhas:</h3>';
+            
+            // Testa Euller.Adm
+            const euller = users.find(u => u.username === 'Euller.Adm');
+            if (euller) {
+                const senhaEuller = atob(euller.senha);
+                html += `<p><strong>Euller.Adm:</strong><br>`;
+                html += `Senha armazenada: ${euller.senha}<br>`;
+                html += `Senha decodificada: ${senhaEuller}<br>`;
+                html += `Senha esperada: admin123<br>`;
+                html += `Status: ${senhaEuller === 'admin123' ? '✅ OK' : '❌ ERRO'}</p>`;
+            } else {
+                html += '<p class="error">❌ Euller.Adm não encontrado!</p>';
+            }
+            
+            // Testa Kleber.Adm
+            const kleber = users.find(u => u.username === 'Kleber.Adm');
+            if (kleber) {
+                const senhaKleber = atob(kleber.senha);
+                html += `<p><strong>Kleber.Adm:</strong><br>`;
+                html += `Senha armazenada: ${kleber.senha}<br>`;
+                html += `Senha decodificada: ${senhaKleber}<br>`;
+                html += `Senha esperada: admin456<br>`;
+                html += `Status: ${senhaKleber === 'admin456' ? '✅ OK' : '❌ ERRO'}</p>`;
+            } else {
+                html += '<p class="error">❌ Kleber.Adm não encontrado!</p>';
+            }
+            
+            html += '</div>';
+            document.getElementById('resultado').innerHTML = html;
+        }
+        
+        function criarAdmins() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Criar Euller.Adm
+            const eullerExists = users.find(u => u.username === 'Euller.Adm');
+            if (!eullerExists) {
+                const eullerAdmin = {
+                    nome: 'Euller.Adm',
+                    email: 'euller.adm@artcachimbo.com',
+                    username: 'Euller.Adm',
+                    senha: btoa('admin123'),
+                    createdAt: new Date().toISOString(),
+                    isAdmin: true
+                };
+                users.push(eullerAdmin);
+                console.log('Euller.Adm criado com senha: admin123');
+            }
+            
+            // Criar Kleber.Adm
+            const kleberExists = users.find(u => u.username === 'Kleber.Adm');
+            if (!kleberExists) {
+                const kleberAdmin = {
+                    nome: 'Kleber.Adm',
+                    email: 'kleber.adm@artcachimbo.com',
+                    username: 'Kleber.Adm',
+                    senha: btoa('admin456'),
+                    createdAt: new Date().toISOString(),
+                    isAdmin: true
+                };
+                users.push(kleberAdmin);
+                console.log('Kleber.Adm criado com senha: admin456');
+            }
+            
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            document.getElementById('resultado').innerHTML = 
+                '<div class="result success"><p>✅ Administradores criados/recarregados!</p>' +
+                '<button onclick="verUsuarios()">Ver Usuários</button></div>';
+        }
+        
+        function limparTudo() {
+            if (confirm('Tem certeza que deseja limpar todos os dados?')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                document.getElementById('resultado').innerHTML = 
+                    '<div class="result success"><p>✅ Todos os dados foram limpos!</p>' +
+                    '<button onclick="criarAdmins()">Criar Admins</button></div>';
+            }
+        }
+        
+        // Mostra usuários ao carregar
+        window.onload = function() {
+            verUsuarios();
+        };
+    </script>
+</body>
+</html>

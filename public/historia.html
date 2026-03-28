@@ -3,151 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nossa História - Art&Cachimbo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>História - Art&Cachimbo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
     <style>
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
+        /* Reset e Fontes */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        
+        body {
+            background-color: #1a0f00;
+            color: #f4e4bc;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('static/textura_madeira.jpg');
+            background-size: cover;
+            min-height: 100vh;
         }
-        .timeline {
-            position: relative;
+
+        /* Header e Logotipo */
+        header {
+            text-align: center;
             padding: 20px 0;
+            position: relative;
         }
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #667eea;
+
+        /* Menu de Navegação com Logo Central */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 0;
         }
-        .timeline-item {
-            margin: 50px 0;
+
+        .nav-btn {
+            background: #4a341b;
+            border: 2px solid #8b5e34;
+            color: #d4af37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: inset 0 0 10px #000;
+            transition: 0.3s;
         }
-        .timeline-content {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
+
+        .nav-btn:hover {
+            background: #5d4326;
+            transform: scale(1.05);
+        }
+
+        .content {
+            text-align: center;
+            margin: 40px 0;
+            padding: 0 20px;
+        }
+
+        .content img {
+            max-width: 600px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        .content h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            color: #ccc;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Engrenagens Decorativas */
+        .gears-footer {
+            height: 60px;
+            background: #22150a;
+            border-top: 5px solid #110904;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            overflow: hidden;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Art&Cachimbo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="historia.html">Nossa História</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="produtos.html">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="catalogo.html">Catálogo</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4 mb-4">Nossa História</h1>
-            <p class="lead">Uma jornada de fé, tradição e espiritualidade</p>
-        </div>
-    </section>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-btn">HOME</a>
+            <a href="historia.html" class="nav-btn">HISTÓRIA</a>
+            <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
+            <img src="static/LgC.jpeg" alt="Logo Central" style="max-width: 200px; margin: 0 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+            <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
+            <a href="login.html" class="nav-btn">LOGIN</a>
+            <a href="register.html" class="nav-btn">REGISTRAR</a>
+        </nav>
+    </header>
 
-    <!-- History Content -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto">
-                    <div class="timeline">
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3><i class="fas fa-seedling text-primary"></i> O Começo</h3>
-                                <p>Nossa história começou com a paixão pela espiritualidade e o desejo de compartilhar conhecimentos ancestrais. O que era uma pequena prática familiar tornou-se uma missão de levar fé e esperança a mais pessoas.</p>
-                            </div>
-                        </div>
+    <div class="content">
+        <img src="static/Historia.jpeg" alt="História dos Cachimbos">
+        <h2>Nossa História</h2>
+        <p>
+            A história dos cachimbos Raimundão da Jurema é uma jornada de tradição, arte e espiritualidade. 
+            Cada peça conta uma história, cada detalhe revela a maestria dos artesãos que dedicam suas vidas 
+            a preservar esta cultura milenar. Desde a seleção das madeiras nobres até o acabamento final, 
+            cada cachimbo é uma obra única, carregada de simbolismo e significado.
+        </p>
+    </div>
 
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3><i class="fas fa-hands text-success"></i> Tradição e Dedicação</h3>
-                                <p>Cada produto é criado com base em tradições passadas de geração em geração. Respeitamos os rituais, os fundamentos e a energia que cada item carrega.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3><i class="fas fa-heart text-danger"></i> Amor e Respeito</h3>
-                                <p>Trabalhamos com amor e respeito pela espiritualidade de cada cliente. Acreditamos que cada pessoa tem sua jornada única e estamos aqui para apoiar esse caminho.</p>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item">
-                            <div class="timeline-content">
-                                <h3><i class="fas fa-star text-warning"></i> Missão</h3>
-                                <p>Nossa missão é ser ponte entre o material e o espiritual, oferecendo produtos sagrados que elevam a conexão com o divino e trazem paz e equilíbrio.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row mt-5">
-                <div class="col-md-4 text-center mb-4">
-                    <i class="fas fa-award fa-3x text-primary mb-3"></i>
-                    <h4>Qualidade</h4>
-                    <p>Produtos selecionados com critério e cuidado</p>
-                </div>
-                <div class="col-md-4 text-center mb-4">
-                    <i class="fas fa-users fa-3x text-success mb-3"></i>
-                    <h4>Confiança</h4>
-                    <p>Anos de experiência e milhares de clientes satisfeitos</p>
-                </div>
-                <div class="col-md-4 text-center mb-4">
-                    <i class="fas fa-pray fa-3x text-danger mb-3"></i>
-                    <h4>Espiritualidade</h4>
-                    <p>Respeito e dedicação às práticas sagradas</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-5 bg-light">
-        <div class="container text-center">
-            <h2>Faça Parte da Nossa História</h2>
-            <p class="lead">Descubra como nossos produtos podem transformar sua jornada espiritual</p>
-            <a href="catalogo.html" class="btn btn-primary btn-lg">Ver Catálogo</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 Art&Cachimbo. Todos os direitos reservados.</p>
-            <div>
-                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
-            </div>
-        </div>
+    <footer class="gears-footer">
+        <span style="color: #4a341b; font-size: 2rem;">⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️</span>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

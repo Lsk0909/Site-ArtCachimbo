@@ -1,4 +1,4 @@
-from app import app, db, User, SiteVisit, LoginLog, Product
+from app import app, db, User, SiteVisit, Product
 import sqlite3
 from datetime import datetime
 
@@ -61,20 +61,6 @@ def view_database():
                 print("-" * 20)
         else:
             print("Nenhuma visita registrada.")
-        
-        print("\n" + "=" * 40)
-        print("TENTATIVAS DE LOGIN")
-        print("=" * 40)
-        
-        login_logs = LoginLog.query.all()
-        if login_logs:
-            print(f"Total de tentativas: {len(login_logs)}")
-            successful = LoginLog.query.filter_by(success=True).count()
-            failed = LoginLog.query.filter_by(success=False).count()
-            print(f"Sucesso: {successful}")
-            print(f"Falha: {failed}")
-        else:
-            print("Nenhuma tentativa de login registrada.")
     
     conn.close()
     print("\n" + "=" * 60)
@@ -83,3 +69,4 @@ def view_database():
 
 if __name__ == "__main__":
     view_database()
+    input("\nPressione ENTER para fechar...")

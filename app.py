@@ -137,3 +137,6 @@ def handler(environ, start_response):
 
 # Exportar para Vercel
 app.wsgi_app = DispatcherMiddleware(app.wsgi_app)
+
+# Para compatibilidade com Vercel
+app.wsgi_app = app.wsgi_app.app if hasattr(app.wsgi_app, 'app') else app.wsgi_app

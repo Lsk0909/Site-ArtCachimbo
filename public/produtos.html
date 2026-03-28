@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portifolio - Art&Cachimbo</title>
     <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/mobile.css">
     <style>
         /* Reset e Fontes */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
@@ -33,35 +34,7 @@
         /* Header e Logotipo */
         header {
             text-align: center;
-            padding: 20px 0;
             position: relative;
-        }
-
-        /* Menu de Navegação com Logo Central */
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 0;
-        }
-
-        .nav-btn {
-            background: #4a341b;
-            border: 2px solid #8b5e34;
-            color: #d4af37;
-            padding: 8px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: inset 0 0 10px #000;
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: #5d4326;
-            transform: scale(1.05);
         }
 
         .content {
@@ -161,15 +134,19 @@
 <body>
 
     <header>
-        <nav>
-            <a href="index.html" class="nav-btn">HOME</a>
-            <a href="historia.html" class="nav-btn">HISTÓRIA</a>
-            <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
-            <img src="static/LgC.jpeg" alt="Logo Central" style="max-width: 200px; margin: 0 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
-            <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
-            <a href="login.html" class="nav-btn">LOGIN</a>
-            <a href="register.html" class="nav-btn">REGISTRAR</a>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <a href="index.html" class="nav-btn">HOME</a>
+                <a href="historia.html" class="nav-btn">HISTÓRIA</a>
+                <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
+                <div class="logo-container">
+                    <img src="static/LgC.jpeg" alt="Logo Central">
+                </div>
+                <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
+                <a href="login.html" class="nav-btn">LOGIN</a>
+                <a href="register.html" class="nav-btn">REGISTRAR</a>
+            </nav>
+        </div>
     </header>
 
     <div class="content">

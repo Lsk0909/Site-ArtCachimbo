@@ -57,10 +57,12 @@
             transition: all 0.3s !important;
         `);
         
-        // Encontra o nav
+        // Encontra o nav container
+        const navContainer = document.querySelector('.nav-container');
         const nav = document.querySelector('nav');
-        if (!nav) {
-            console.log('❌ Nav não encontrado');
+        
+        if (!navContainer || !nav) {
+            console.log('❌ Nav container não encontrado');
             return;
         }
         
@@ -71,9 +73,16 @@
             nav.insertBefore(btn, loginBtn);
             console.log('✅ Botão injetado antes do LOGIN');
         } else {
-            // Se não encontrar LOGIN, adiciona no final
-            nav.appendChild(btn);
-            console.log('✅ Botão injetado no final do nav');
+            // Se não encontrar LOGIN, adiciona antes do logo
+            const logoContainer = nav.querySelector('.logo-container');
+            if (logoContainer) {
+                nav.insertBefore(btn, logoContainer);
+                console.log('✅ Botão injetado antes do LOGO');
+            } else {
+                // Se não encontrar logo, adiciona no final
+                nav.appendChild(btn);
+                console.log('✅ Botão injetado no final do nav');
+            }
         }
         
         // Confirmação

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art&Cachimbo - Cachimbo Raimundão da Jurema</title>
     <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/mobile.css">
     <style>
         /* Reset e Fontes */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
@@ -19,90 +20,69 @@
         /* Header e Logotipo */
         header {
             text-align: center;
-            padding: 20px 0;
             position: relative;
         }
 
-        /* Menu de Navegação com Logo Central */
-        nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 0;
-        }
-
-        .logo-container {
-            margin: 0 30px;
-        }
-
-        .logo-container img {
-            max-width: 200px;
-            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
-        }
-
-        .nav-btn {
-            background: #4a341b;
-            border: 2px solid #8b5e34;
-            color: #d4af37;
-            padding: 8px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 0.9rem;
-            box-shadow: inset 0 0 10px #000;
-            transition: 0.3s;
-        }
-
-        .nav-btn:hover {
-            background: #5d4326;
-            transform: scale(1.05);
-        }
-
-        /* Hero Section (Banner Central) */
+        /* Hero Section Responsiva */
         .hero {
-            width: 90%;
+            width: 95%;
             max-width: 1200px;
-            height: 500px;
-            margin: 20px auto;
-            border: 8px solid #3d2b1f;
+            min-height: 400px;
+            height: auto;
+            margin: 15px auto;
+            border: 6px solid #3d2b1f;
             box-shadow: 0 0 30px rgba(0,0,0,1);
-            background-image: url('static/pg_inc.jpeg'); /* Imagem da oficina */
+            background: linear-gradient(135deg, rgba(26,15,0,0.95) 0%, rgba(10,8,0,0.95) 50%, rgba(26,15,0,0.95) 100%), url('static/textura_madeira.jpg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
+            padding: 30px 20px;
             display: flex;
-            align-items: flex-end;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        /* Rodapé de Informações (Texto sobre a imagem) */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 1;
+        }
+
         .hero-content {
-            background: rgba(0, 0, 0, 0.7);
-            width: 100%;
-            padding: 30px;
-            border-top: 2px solid #8b5e34;
+            position: relative;
+            z-index: 2;
+            max-width: 90%;
         }
 
         .hero-content h1 {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             color: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             text-transform: uppercase;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .hero-content p {
-            max-width: 700px;
-            font-size: 1rem;
+            max-width: 100%;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             line-height: 1.5;
             color: #ccc;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
         .btn-colecao {
             display: inline-block;
             margin-top: 20px;
-            padding: 12px 30px;
+            padding: 12px 25px;
             background: #2a1b12;
             border: 1px solid #d4af37;
             color: #fff;
@@ -110,6 +90,7 @@
             text-transform: uppercase;
             font-weight: bold;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
         .btn-colecao:hover {
@@ -117,17 +98,60 @@
             color: #000;
         }
 
-        /* Widget de Orçamento */
+        /* Widget de Orçamento Responsivo */
         .whatsapp-widget {
             position: absolute;
-            bottom: 20px;
-            right: 20px;
+            bottom: 15px;
+            right: 15px;
             background: #3d2b1f;
             border: 1px solid #8b5e34;
-            padding: 10px;
-            font-size: 0.8rem;
+            padding: 8px;
+            font-size: 0.7rem;
             text-align: center;
             border-radius: 5px;
+            z-index: 10;
+        }
+
+        /* Mobile Hero */
+        @media (max-width: 768px) {
+            .hero {
+                width: 98%;
+                margin: 10px auto;
+                padding: 20px 15px;
+                min-height: 350px;
+            }
+
+            .hero-content h1 {
+                font-size: 1.5rem;
+                margin-bottom: 10px;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+            }
+
+            .btn-colecao {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+
+            .whatsapp-widget {
+                font-size: 0.6rem;
+                padding: 6px;
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero-content p {
+                font-size: 0.8rem;
+            }
         }
 
         /* Engrenagens Decorativas (Simulação do rodapé) */
@@ -146,15 +170,19 @@
 <body>
 
     <header>
-        <nav>
-            <a href="index.html" class="nav-btn">HOME</a>
-            <a href="historia.html" class="nav-btn">HISTÓRIA</a>
-            <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
-            <img src="static/LgC.jpeg" alt="Logo Central" style="max-width: 200px; margin: 0 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
-            <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
-            <a href="login.html" class="nav-btn">LOGIN</a>
-            <a href="register.html" class="nav-btn">REGISTRAR</a>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <a href="index.html" class="nav-btn">HOME</a>
+                <a href="historia.html" class="nav-btn">HISTÓRIA</a>
+                <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
+                <div class="logo-container">
+                    <img src="static/LgC.jpeg" alt="Logo Central">
+                </div>
+                <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
+                <a href="login.html" class="nav-btn">LOGIN</a>
+                <a href="register.html" class="nav-btn">REGISTRAR</a>
+            </nav>
+        </div>
     </header>
 
     <main class="hero">

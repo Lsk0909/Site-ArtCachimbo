@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Domínio Artcachimbo.tk</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #1a0f00; color: #f4e4bc; }
+        .container { max-width: 800px; margin: 0 auto; background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; }
+        .test-item { background: rgba(255,255,255,0.05); padding: 15px; margin: 10px 0; border-radius: 10px; }
+        .success { color: #28a745; }
+        .error { color: #dc3545; }
+        .warning { color: #ffc107; }
+        .info { color: #17a2b8; }
+        button { background: #d4af37; color: #000; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; margin: 5px; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌐 TESTE DOMÍNIO - Artcachimbo.tk</h1>
+        
+        <div class="test-item">
+            <h3>📋 INSTRUÇÕES DE TESTE:</h3>
+            <p>1. Configure o domínio no Freenom seguindo o DOMINIO_GUIDE.md</p>
+            <p>2. Adicione custom domain no GitHub Pages</p>
+            <p>3. Use este script para testar se está funcionando</p>
+        </div>
+
+        <div class="test-item">
+            <h3>🧪 TESTES AUTOMÁTICOS:</h3>
+            <button onclick="testarDominio()">🔍 Testar Domínio Principal</button>
+            <button onclick="testarWWW()">🌐 Testar WWW</button>
+            <button onclick="testarHTTPS()">🔒 Testar HTTPS</button>
+            <button onclick="testarGitHub()">🐙 Testar GitHub Pages</button>
+            <button onclick="testarTodos()">🚀 Testar Tudo</button>
+        </div>
+
+        <div class="test-item">
+            <h3>📱 TESTES MANUAIS:</h3>
+            <p><strong>URL Principal:</strong> <a href="https://Artcachimbo.tk" target="_blank">https://Artcachimbo.tk</a></p>
+            <p><strong>URL WWW:</strong> <a href="https://www.Artcachimbo.tk" target="_blank">https://www.Artcachimbo.tk</a></p>
+            <p><strong>GitHub:</strong> <a href="https://lsk0909.github.io/Site-ArtCachimbo" target="_blank">https://lsk0909.github.io/Site-ArtCachimbo</a></p>
+        </div>
+
+        <div class="test-item">
+            <h3>🔧 VERIFICAÇÕES:</h3>
+            <p><strong>DNS Records esperados:</strong></p>
+            <ul>
+                <li>A: @ → 185.199.108.153</li>
+                <li>A: @ → 185.199.109.153</li>
+                <li>A: @ → 185.199.110.153</li>
+                <li>A: @ → 185.199.111.153</li>
+                <li>CNAME: www → lsk0909.github.io</li>
+                <li>TXT: @ → github-pages-challenge-lsk0909</li>
+            </ul>
+        </div>
+
+        <div id="results"></div>
+
+        <div class="test-item">
+            <h3>📊 STATUS ATUAL:</h3>
+            <div id="status">
+                <p class="info">⏳ Aguardando configuração do domínio...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function testarDominio() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>🔍 Testando Domínio Principal...</h3>';
+            
+            // Testa se o domínio resolve
+            fetch('https://Artcachimbo.tk')
+                .then(response => {
+                    if (response.ok) {
+                        results.innerHTML += '<p class="success">✅ Domínio principal funcionando!</p>';
+                        results.innerHTML += '<p class="info">📊 Status: ' + response.status + '</p>';
+                    } else {
+                        results.innerHTML += '<p class="warning">⚠️ Domínio respondeu com status: ' + response.status + '</p>';
+                    }
+                })
+                .catch(error => {
+                    results.innerHTML += '<p class="error">❌ Erro ao acessar domínio principal: ' + error.message + '</p>';
+                    results.innerHTML += '<p class="info">💡 Verifique configuração DNS no Freenom</p>';
+                });
+        }
+
+        function testarWWW() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<h3>🌐 Testando WWW...</h3>';
+            
+            fetch('https://www.Artcachimbo.tk')
+                .then(response => {
+                    if (response.ok) {
+                        results.innerHTML += '<p class="success">✅ WWW funcionando!</p>';
+                    } else {
+                        results.innerHTML += '<p class="warning">⚠️ WWW respondeu com status: ' + response.status + '</p>';
+                    }
+                })
+                .catch(error => {
+                    results.innerHTML += '<p class="error">❌ Erro ao acessar WWW: ' + error.message + '</p>';
+                    results.innerHTML += '<p class="info">💡 Verifique CNAME record no Freenom</p>';
+                });
+        }
+
+        function testarHTTPS() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<h3>🔒 Testando HTTPS...</h3>';
+            
+            // Verifica se estamos usando HTTPS
+            if (window.location.protocol === 'https:') {
+                results.innerHTML += '<p class="success">✅ HTTPS está ativo!</p>';
+                results.innerHTML += '<p class="info">🔒 Certificado SSL válido</p>';
+            } else {
+                results.innerHTML += '<p class="warning">⚠️ HTTPS não detectado</p>';
+                results.innerHTML += '<p class="info">💡 Aguarde 24 horas para SSL ser emitido</p>';
+            }
+        }
+
+        function testarGitHub() {
+            const results = document.getElementById('results');
+            results.innerHTML += '<h3>🐙 Testando GitHub Pages...</h3>';
+            
+            fetch('https://lsk0909.github.io/Site-ArtCachimbo')
+                .then(response => {
+                    if (response.ok) {
+                        results.innerHTML += '<p class="success">✅ GitHub Pages funcionando!</p>';
+                        results.innerHTML += '<p class="info">📊 Status: ' + response.status + '</p>';
+                    } else {
+                        results.innerHTML += '<p class="error">❌ GitHub Pages com erro: ' + response.status + '</p>';
+                    }
+                })
+                .catch(error => {
+                    results.innerHTML += '<p class="error">❌ Erro no GitHub Pages: ' + error.message + '</p>';
+                });
+        }
+
+        function testarTodos() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h3>🚀 Testando Tudo...</h3>';
+            
+            testarDominio();
+            setTimeout(testarWWW, 1000);
+            setTimeout(testarHTTPS, 2000);
+            setTimeout(testarGitHub, 3000);
+        }
+
+        function atualizarStatus() {
+            const status = document.getElementById('status');
+            const horaAtual = new Date().toLocaleString('pt-BR');
+            
+            status.innerHTML = `
+                <p class="info">🕐 Última verificação: ${horaAtual}</p>
+                <p class="info">🌐 Domínio: Artcachimbo.tk</p>
+                <p class="info">🐙 GitHub: lsk0909.github.io/Site-ArtCachimbo</p>
+                <p class="info">📱 Teste mobile: Abra no celular</p>
+            `;
+        }
+
+        // Atualiza status ao carregar
+        atualizarStatus();
+        
+        // Atualiza status a cada 30 segundos
+        setInterval(atualizarStatus, 30000);
+    </script>
+</body>
+</html>

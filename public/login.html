@@ -186,16 +186,72 @@
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Simulação de login
+            // Limpa mensagens anteriores
+            const existingMsg = document.querySelector('.message');
+            if (existingMsg) {
+                existingMsg.remove();
+            }
+            
             const username = document.getElementById('username').value;
             const senha = document.getElementById('senha').value;
             
-            // Aqui você poderia adicionar validação real
-            if (username && senha) {
-                alert('Login simulado! Em um site real, isso redirecionaria para o painel.');
-                // window.location.href = 'admin.html';
+            // Validação
+            if (!username || !senha) {
+                showMessage('Por favor, preencha todos os campos.', 'error');
+                return;
+            }
+            
+            if (senha.length < 4) {
+                showMessage('A senha deve ter pelo menos 4 caracteres.', 'error');
+                return;
+            }
+            
+            // Verifica se o usuário existe no "banco de dados"
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.username === username && atob(u.senha) === senha);
+            
+            if (user) {
+                // Login bem-sucedido
+                showMessage('Login realizado com sucesso! Redirecionando...', 'success');
+                
+                // Salva dados na sessão
+                localStorage.setItem('username', username);
+                localStorage.setItem('nome', user.nome);
+                localStorage.setItem('email', user.email);
+                localStorage.setItem('loggedIn', 'true');
+                
+                // Redireciona após 2 segundos
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
             } else {
-                alert('Por favor, preencha todos os campos.');
+                // Usuário não encontrado ou senha incorreta
+                showMessage('Usuário ou senha incorretos. Tente novamente.', 'error');
+            }
+        });
+        
+        function showMessage(text, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+            messageDiv.style.cssText = `
+                background: ${type === 'error' ? 'rgba(220, 53, 69, 0.2)' : 'rgba(40, 167, 69, 0.2)'};
+                border: 1px solid ${type === 'error' ? '#dc3545' : '#28a745'};
+                color: ${type === 'error' ? '#dc3545' : '#28a745'};
+                padding: 10px;
+                margin-bottom: 20px;
+                border-radius: 5px;
+                text-align: center;
+            `;
+            messageDiv.textContent = text;
+            
+            const form = document.getElementById('loginForm');
+            form.parentNode.insertBefore(messageDiv, form);
+        }
+        
+        // Verifica se já está logado
+        window.addEventListener('load', function() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                showMessage('Você já está logado como ' + localStorage.getItem('username'), 'success');
             }
         });
     </script>

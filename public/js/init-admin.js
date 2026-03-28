@@ -1,5 +1,13 @@
-// Inicializa usuários administradores
+// Sistema de inicialização de administradores (DESATIVADO)
+// Os usuários serão criados manualmente após limpeza
+
 function initAdminUsers() {
+    // DESATIVADO - Sistema resetado para criação manual
+    console.log('Sistema de inicialização automática desativado.');
+    console.log('Crie usuários manualmente após limpeza dos dados.');
+    
+    // Se precisar reativar, remova os comentários abaixo:
+    /*
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     
     // Verifica se o usuário Euller já existe
@@ -44,6 +52,7 @@ function initAdminUsers() {
     localStorage.setItem('users', JSON.stringify(users));
     
     console.log('Total de usuários administradores:', users.filter(u => u.isAdmin).length);
+    */
 }
 
 // Inicializa quando a página carrega

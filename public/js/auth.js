@@ -94,11 +94,17 @@ function showLogoutButton() {
     }
     logoutBtn.style.display = 'inline-block';
     
-    // Verifica se é o usuário Euller para mostrar o painel admin
+    // Verifica se é administrador para mostrar o painel admin
     const username = localStorage.getItem('username');
-    if (username === 'Euller') {
+    if (isAdmin(username)) {
         showAdminButton();
     }
+}
+
+function isAdmin(username) {
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const currentUser = users.find(u => u.username === username);
+    return currentUser && currentUser.isAdmin;
 }
 
 function showAdminButton() {

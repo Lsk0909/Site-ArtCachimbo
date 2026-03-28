@@ -1,0 +1,154 @@
+═══════════════════════════════════════════════════════════════
+         🔍 COMO ACESSAR O BANCO DE DADOS DO SITE
+═══════════════════════════════════════════════════════════════
+
+📋 MÉTODO 1: VIA PROMPT DE COMANDO (CMD)
+
+1️⃣  Pressione WIN + R
+2️⃣  Digite "cmd" e pressione Enter
+3️⃣  Navegue até a pasta do site:
+    cd "c:\Users\Euller\Downloads\python\Site ArtCachimbo"
+4️⃣  Execute o script:
+    ABRIR_DADOS_SITE.bat
+
+📋 MÉTODO 2: VIA NAVEGADOR (RECOMENDADO)
+
+1️⃣  Abra o site: http://localhost:8000
+2️⃣  Pressione F12 para abrir DevTools
+3️⃣  Vá para aba "Console"
+4️⃣  Digite os comandos abaixo:
+
+═══════════════════════════════════════════════════════════════
+           📊 COMANDOS DO CONSOLE DO NAVEGADOR
+═══════════════════════════════════════════════════════════════
+
+🔹 VER TODOS OS USUÁRIOS:
+   localStorage.getItem("users")
+
+🔹 VER VISITAS REGISTRADAS:
+   localStorage.getItem("site_visits")
+
+🔹 VER CONTROLE DIÁRIO:
+   localStorage.getItem("daily_visits")
+
+🔹 VER SE ESTÁ LOGADO:
+   localStorage.getItem("loggedIn")
+   localStorage.getItem("username")
+
+🔹 VER TODOS OS DADOS:
+   localStorage
+
+🔹 VER DADOS FORMATADOS:
+   JSON.parse(localStorage.getItem("users"))
+
+🔹 LIMPAR TODOS OS DADOS:
+   localStorage.clear()
+
+═══════════════════════════════════════════════════════════════
+            🔐 ACESSO ADMINISTRATIVO
+═══════════════════════════════════════════════════════════════
+
+🌐 URL DO LOGIN:
+   http://localhost:8000/login.html
+
+👤 DADOS DOS ADMINISTRADORES:
+
+═══════════════════════════════════════════════════════════════
+                  ADMINISTRADOR 1 - EULLER
+═══════════════════════════════════════════════════════════════
+   Usuário: Euller
+   Senha: admin123
+   Email: eullerfernandes649@gmail.com
+
+═══════════════════════════════════════════════════════════════
+                  ADMINISTRADOR 2 - KLEBER
+═══════════════════════════════════════════════════════════════
+   Usuário: Kleber
+   Senha: admin456
+   Email: kleber@admin.com
+
+🎛️ PAINEL ADMIN:
+   http://localhost:8000/admin.html
+   (após fazer login, clique no botão "PAINEL" no menu)
+
+⚡ AMBOS TÊM ACESSO COMPLETO AO PAINEL ADMINISTRATIVO!
+
+═══════════════════════════════════════════════════════════════
+            📊 ESTRUTURA DO BANCO DE DADOS
+═══════════════════════════════════════════════════════════════
+
+💾 TIPO: LocalStorage (navegador)
+📱 LOCAL: Armazenado no navegador do usuário
+🔄 ATUALIZAÇÃO: Tempo real
+🔐 SEGURANÇA: Criptografia básica (Base64)
+
+📋 TABELAS:
+
+👥 USERS:
+{
+  "nome": "Euller",
+  "email": "eullerfernandes649@gmail.com", 
+  "username": "Euller",
+  "senha": "YWRtaW4xMjM=", // admin123
+  "createdAt": "2024-03-27T...",
+  "isAdmin": true
+}
+
+👁️ SITE_VISITS:
+{
+  "id": 1234567890,
+  "timestamp": "2024-03-27T...",
+  "page": "/index.html",
+  "ip": "192.168.45.123",
+  "userAgent": "Mozilla/5.0...",
+  "sessionId": "session_..."
+}
+
+📅 DAILY_VISITS:
+{
+  "192.168.45.123_Tue Mar 27 2024": {
+    "timestamp": "2024-03-27T...",
+    "ip": "192.168.45.123",
+    "page": "/index.html"
+  }
+}
+
+═══════════════════════════════════════════════════════════════
+            ⚙️ FUNCIONALIDADES DISPONÍVEIS
+═══════════════════════════════════════════════════════════════
+
+📊 NO PAINEL ADMIN:
+• Ver estatísticas em tempo real
+• Exportar dados para CSV
+• Gerenciar usuários
+• Limpar visitas
+• Ver logs detalhados
+
+🔧 CONTROLES:
+• 1 visita por IP por dia
+• Máximo 1000 visitas armazenadas
+• Limpeza automática de registros antigos
+• Backup via exportação CSV
+
+═══════════════════════════════════════════════════════════════
+            🚀 INSTRUÇÕES FINAIS
+═══════════════════════════════════════════════════════════════
+
+✅ PARA COMEÇAR:
+1. Execute: ABRIR_DADOS_SITE.bat
+2. Escolha a opção desejada
+3. Siga as instruções
+
+📞 EM CASO DE PROBLEMAS:
+• Verifique se o site está rodando (localhost:8000)
+• Use navegador Chrome ou Firefox
+• Limpe o cache se necessário
+• Recarregue a página (F5)
+
+🎯 DICAS RÁPIDAS:
+• F12 = Ferramentas de Desenvolvedor
+• Console = Terminal do navegador
+• localStorage = Banco de dados local
+• JSON.parse() = Formatar dados
+
+═══════════════════════════════════════════════════════════════

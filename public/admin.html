@@ -292,7 +292,17 @@
             const loggedIn = localStorage.getItem('loggedIn') === 'true';
             const username = localStorage.getItem('username');
             
-            if (!loggedIn || username !== 'Euller') {
+            if (!loggedIn) {
+                alert('Acesso negado! Faça login para acessar esta página.');
+                window.location.href = 'login.html';
+                return false;
+            }
+            
+            // Verifica se o usuário é administrador
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const currentUser = users.find(u => u.username === username);
+            
+            if (!currentUser || !currentUser.isAdmin) {
                 alert('Acesso negado! Apenas administradores podem acessar esta página.');
                 window.location.href = 'index.html';
                 return false;

@@ -74,6 +74,7 @@ function hideAuthButtons() {
 }
 
 function showLogoutButton() {
+    console.log('Mostrando botão de logout...');
     let logoutBtn = document.getElementById('logout-btn');
     if (!logoutBtn) {
         logoutBtn = document.createElement('a');
@@ -90,24 +91,45 @@ function showLogoutButton() {
         const nav = document.querySelector('nav');
         if (nav) {
             nav.appendChild(logoutBtn);
+            console.log('Botão logout adicionado ao nav');
+        } else {
+            console.log('Nav não encontrado!');
         }
     }
     logoutBtn.style.display = 'inline-block';
     
     // Verifica se é administrador para mostrar o painel admin
     const username = localStorage.getItem('username');
-    if (isAdmin(username)) {
+    console.log('Username do localStorage:', username);
+    
+    if (username && isAdmin(username)) {
+        console.log('Usuário é admin, mostrando botão PAINEL');
         showAdminButton();
+    } else {
+        console.log('Usuário não é admin ou não encontrado');
     }
 }
 
 function isAdmin(username) {
+    console.log('Verificando se usuário é admin:', username);
     const users = JSON.parse(localStorage.getItem('users') || '[]');
+    console.log('Usuários encontrados:', users.length);
+    
     const currentUser = users.find(u => u.username === username);
-    return currentUser && currentUser.isAdmin;
+    console.log('Usuário encontrado:', currentUser);
+    
+    if (currentUser) {
+        console.log('isAdmin:', currentUser.isAdmin);
+        console.log('Username match:', currentUser.username === username);
+        return currentUser.isAdmin === true;
+    }
+    
+    console.log('Usuário não encontrado!');
+    return false;
 }
 
 function showAdminButton() {
+    console.log('Criando botão PAINEL...');
     let adminBtn = document.getElementById('admin-btn');
     if (!adminBtn) {
         adminBtn = document.createElement('a');
@@ -117,15 +139,26 @@ function showAdminButton() {
         adminBtn.textContent = 'PAINEL';
         adminBtn.style.background = '#d4af37';
         adminBtn.style.color = '#000';
+        adminBtn.style.fontWeight = 'bold';
+        adminBtn.style.margin = '0 5px';
         
         // Adiciona antes do botão de logout
         const logoutBtn = document.getElementById('logout-btn');
         const nav = document.querySelector('nav');
+        
         if (nav && logoutBtn) {
             nav.insertBefore(adminBtn, logoutBtn);
+            console.log('Botão PAINEL adicionado antes do LOGOUT');
+        } else if (nav) {
+            nav.appendChild(adminBtn);
+            console.log('Botão PAINEL adicionado ao final do nav');
+        } else {
+            console.log('Nav não encontrado para adicionar botão PAINEL!');
         }
+    } else {
+        adminBtn.style.display = 'inline-block';
+        console.log('Botão PAINEL já existia, apenas mostrando');
     }
-    adminBtn.style.display = 'inline-block';
 }
 
 function hideLogoutButton() {
@@ -145,9 +178,23 @@ function logout() {
     window.location.reload();
 }
 
-// Verifica status quando a página carrega
+// Inicializa quando a página carrega
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('Auth.js carregado, verificando status...');
     checkAuthStatus();
+    
+    // Força verificação do botão admin após um pequeno delay
+    setTimeout(() => {
+        const username = localStorage.getItem('username');
+        const loggedIn = localStorage.getItem('loggedIn') === 'true';
+        
+        console.log('Verificação delay - Username:', username, 'LoggedIn:', loggedIn);
+        
+        if (loggedIn && username && isAdmin(username)) {
+            console.log('Forçando mostrar botão PAINEL...');
+            showAdminButton();
+        }
+    }, 1000);
     
     // Verifica periodicamente (para mudanças em outras abas)
     setInterval(checkAuthStatus, 1000);

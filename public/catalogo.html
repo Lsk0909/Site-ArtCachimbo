@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Art&Cachimbo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        .category-section {
+            padding: 60px 0;
+        }
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .product-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        .product-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Art&Cachimbo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="historia.html">Nossa História</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="produtos.html">Produtos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="catalogo.html">Catálogo</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Catálogo Completo</h1>
+            <p class="lead">Explore todos os nossos produtos sagrados por categoria</p>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="category-section">
+        <div class="container">
+            <!-- Preto Velho -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-primary">
+                            <i class="fas fa-user-ninja"></i>
+                        </div>
+                        <h3>Preto Velho</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos para Sabedoria Anciã</h4>
+                        <div class="product-item">
+                            <h5>Pemba Branca Consagrada</h5>
+                            <p>Para escrita de pontos e proteção espiritual</p>
+                            <span class="badge bg-primary">R$ 25,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Cajado de Preto Velho</h5>
+                            <p>Símbolo de sabedoria e autoridade espiritual</p>
+                            <span class="badge bg-primary">R$ 35,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Tobá Sagrado</h5>
+                            <p>Fumo sagrado para limpeza e defumação</p>
+                            <span class="badge bg-primary">R$ 15,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oxossi -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-success">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Oxossi</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos do Caçador Divino</h4>
+                        <div class="product-item">
+                            <h5>Flecha de Oxossi</h5>
+                            <p>Para abertura de caminhos e caça espiritual</p>
+                            <span class="badge bg-success">R$ 30,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Arco e Flecha Miniatura</h5>
+                            <p>Símbolo de precisão e foco espiritual</p>
+                            <span class="badge bg-success">R$ 40,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Chifre Consagrado</h5>
+                            <p>Para conexão com a natureza e força animal</p>
+                            <span class="badge bg-success">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mestre -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-warning">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Mestre</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos de Cura e Ensino</h4>
+                        <div class="product-item">
+                            <h5>Cajado do Mestre</h5>
+                            <p>Para trabalhos de cura e orientação espiritual</p>
+                            <span class="badge bg-warning text-dark">R$ 45,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Livro de Ponto</h5>
+                            <p>Com orações e pontos cantados sagrados</p>
+                            <span class="badge bg-warning text-dark">R$ 20,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Ervas de Mestre</h5>
+                            <p>Conjunto de ervas para banhos de limpeza</p>
+                            <span class="badge bg-warning text-dark">R$ 18,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Maresia -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-info">
+                            <i class="fas fa-water"></i>
+                        </div>
+                        <h3>Maresia</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos do Mar e Orixás Aquáticos</h4>
+                        <div class="product-item">
+                            <h5>Conchas Sagradas</h5>
+                            <p>Conjunto para rituais de Iemanjá e Oxum</p>
+                            <span class="badge bg-info">R$ 30,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Água do Mar</h5>
+                            <p>Água coletada em momento sagrado para rituais</p>
+                            <span class="badge bg-info">R$ 10,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Areia da Praia</h5>
+                            <p>Areia consagrada para trabalhos de prosperidade</p>
+                            <span class="badge bg-info">R$ 12,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Exu -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-danger">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h3>Exu</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos de Comunicação e Transformação</h4>
+                        <div class="product-item">
+                            <h5>Tridente de Exu</h5>
+                            <p>Para abertura de caminhos e comunicação</p>
+                            <span class="badge bg-danger">R$ 40,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Vela Vermelha</h5>
+                            <p>Vela consagrada para Exu</p>
+                            <span class="badge bg-danger">R$ 8,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Chave de Exu</h5>
+                            <p>Símbolo de abertura de portas e oportunidades</p>
+                            <span class="badge bg-danger">R$ 22,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Convencional -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-secondary">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Convencional</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos de Uso Geral</h4>
+                        <div class="product-item">
+                            <h5>Conjunto de Velas Coloridas</h5>
+                            <p>7 velas para diversas finalidades</p>
+                            <span class="badge bg-secondary">R$ 20,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Incensos Variados</h5>
+                            <p>Conjunto com 10 tipos diferentes</p>
+                            <span class="badge bg-secondary">R$ 15,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Defumador Completo</h5>
+                            <p>Com ervas e resinas para limpeza</p>
+                            <span class="badge bg-secondary">R$ 25,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Torneado -->
+            <div class="category-card">
+                <div class="row align-items-center">
+                    <div class="col-md-3 text-center">
+                        <div class="category-icon text-dark">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Torneado</h3>
+                    </div>
+                    <div class="col-md-9">
+                        <h4>Produtos de Movimento e Transformação</h4>
+                        <div class="product-item">
+                            <h5>Roda de São Cipriano</h5>
+                            <p>Para proteção e movimentação energética</p>
+                            <span class="badge bg-dark">R$ 35,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Fio de Contas</h5>
+                            <p>Para guias e colares espirituais</p>
+                            <span class="badge bg-dark">R$ 18,00</span>
+                        </div>
+                        <div class="product-item">
+                            <h5>Pinga Consagrada</h5>
+                            <para>Para libações e oferendas</para>
+                            <span class="badge bg-dark">R$ 12,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="py-5 bg-primary text-white">
+        <div class="container text-center">
+            <h2 class="mb-4">Faça seu Pedido Agora</h2>
+            <p class="lead mb-4">Envie-nos uma mensagem pelo WhatsApp com os produtos desejados</p>
+            <a href="https://wa.me/55XXXXXXXXXXX" class="btn btn-light btn-lg">
+                <i class="fab fa-whatsapp"></i> Fazer Pedido via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 Art&Cachimbo. Todos os direitos reservados.</p>
+            <div>
+                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

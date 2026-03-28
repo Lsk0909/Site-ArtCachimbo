@@ -170,13 +170,15 @@ echo 🔐 ACESSO AO PAINEL ADMINISTRATIVO
 echo.
 echo 👤 ADMINISTRADORES DISPONÍVEIS:
 echo.
-echo    🟢 ADMIN 1 - Euller
-echo       Usuário: Euller
+echo    🟢 ADMIN 1 - Euller.Adm
+echo       Usuário: Euller.Adm
 echo       Senha: admin123
+echo       Email: euller.adm@artcachimbo.com
 echo.
-echo    🟢 ADMIN 2 - Kleber
-echo       Usuário: Kleber  
+echo    🟢 ADMIN 2 - Kleber.Adm
+echo       Usuário: Kleber.Adm  
 echo       Senha: admin456
+echo       Email: kleber.adm@artcachimbo.com
 echo.
 echo 🌐 Abrindo página de login...
 start http://localhost:8000/login.html
@@ -307,13 +309,15 @@ echo 🔐 ACESSO AO PAINEL ADMINISTRATIVO
 echo.
 echo 👤 ADMINISTRADORES DISPONÍVEIS:
 echo.
-echo    🟢 ADMIN 1 - Euller
-echo       Usuário: Euller
+echo    🟢 ADMIN 1 - Euller.Adm
+echo       Usuário: Euller.Adm
 echo       Senha: admin123
+echo       Email: euller.adm@artcachimbo.com
 echo.
-echo    🟢 ADMIN 2 - Kleber
-echo       Usuário: Kleber  
+echo    🟢 ADMIN 2 - Kleber.Adm
+echo       Usuário: Kleber.Adm  
 echo       Senha: admin456
+echo       Email: kleber.adm@artcachimbo.com
 echo.
 echo 🌐 Abrindo página de login...
 start http://localhost:8000/login.html

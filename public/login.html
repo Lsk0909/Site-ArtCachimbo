@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo - Art&Cachimbo</title>
+    <title>Login - Art&Cachimbo</title>
     <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
     <style>
         /* Reset e Fontes */
@@ -53,72 +53,79 @@
 
         .content {
             text-align: center;
-            margin: 80px auto;
-            max-width: 600px;
-            padding: 40px;
+            margin: 40px auto;
+            max-width: 500px;
+            padding: 30px;
             background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            border: 3px solid #8b5e34;
-        }
-
-        .construction-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
+            border-radius: 15px;
+            border: 2px solid #8b5e34;
         }
 
         .content h2 {
             color: #fff;
-            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-size: 2rem;
+        }
+
+        .form-group {
             margin-bottom: 20px;
-        }
-
-        .content p {
-            color: #ccc;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .features-box {
-            background: rgba(212, 175, 55, 0.2);
-            border: 1px solid #d4af37;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .features-box h3 {
-            color: #d4af37;
-            margin-bottom: 15px;
-        }
-
-        .features-box ul {
-            color: #fff;
             text-align: left;
-            list-style: none;
-            padding: 0;
         }
 
-        .features-box li {
-            margin-bottom: 10px;
+        .form-group label {
+            color: #d4af37;
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
         }
 
-        .btn-home {
-            display: inline-block;
-            padding: 15px 40px;
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #8b5e34;
+            border-radius: 5px;
+            background: rgba(0,0,0,0.3);
+            color: #fff;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
             background: #d4af37;
             color: #000;
-            text-decoration: none;
-            font-weight: bold;
+            border: none;
             border-radius: 25px;
+            font-weight: bold;
             font-size: 1.1rem;
+            cursor: pointer;
             transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .btn-home:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        .register-link {
+            margin-top: 20px;
+            color: #ccc;
+        }
+
+        .register-link a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
         }
 
         /* Engrenagens Decorativas */
@@ -150,26 +157,48 @@
     </header>
 
     <div class="content">
-        <div class="construction-icon">🚧</div>
-        <h2>Em Construção</h2>
-        <p>
-            Nosso catálogo está em desenvolvimento! Em breve você poderá acessar nossa coleção completa de cachimbos artesanais exclusivos.
-        </p>
-        <div class="features-box">
-            <h3>O que esperar:</h3>
-            <ul>
-                <li>🎨 Cachimbos artesanais únicos</li>
-                <li>📖 Descrições detalhadas</li>
-                <li>💰 Preços competitivos</li>
-                <li>🛒 Sistema de compras online</li>
-            </ul>
+        <h2>Login</h2>
+        
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Nome de Usuário:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+            </div>
+            
+            <button type="submit" class="btn-submit">Entrar</button>
+        </form>
+        
+        <div class="register-link">
+            <p>Não tem uma conta? <a href="register.html">Registre-se aqui</a></p>
         </div>
-        <a href="index.html" class="btn-home">🏠 Voltar para Home</a>
     </div>
 
     <footer class="gears-footer">
         <span style="color: #4a341b; font-size: 2rem;">⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️</span>
     </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulação de login
+            const username = document.getElementById('username').value;
+            const senha = document.getElementById('senha').value;
+            
+            // Aqui você poderia adicionar validação real
+            if (username && senha) {
+                alert('Login simulado! Em um site real, isso redirecionaria para o painel.');
+                // window.location.href = 'admin.html';
+            } else {
+                alert('Por favor, preencha todos os campos.');
+            }
+        });
+    </script>
 
 </body>
 </html>

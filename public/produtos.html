@@ -3,225 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos - Art&Cachimbo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Portifolio - Art&Cachimbo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
     <style>
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 80px 0;
+        /* Reset e Fontes */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        
+        body {
+            background-color: #1a0f00;
+            color: #f4e4bc;
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('static/textura_madeira.jpg');
+            background-size: cover;
+            min-height: 100vh;
         }
-        .product-card {
-            transition: transform 0.3s;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+        /* Header e Logotipo */
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
         }
-        .product-card:hover {
+
+        /* Menu de Navegação com Logo Central */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 0;
+        }
+
+        .nav-btn {
+            background: #4a341b;
+            border: 2px solid #8b5e34;
+            color: #d4af37;
+            padding: 8px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: inset 0 0 10px #000;
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #5d4326;
+            transform: scale(1.05);
+        }
+
+        .content {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 1200px;
+            padding: 20px;
+        }
+
+        .content h2 {
+            color: #fff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .content p {
+            color: #ccc;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .grid-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #8b5e34;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .grid-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
-        .category-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
+
+        .grid-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .grid-item h3 {
+            color: #d4af37;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .grid-item p {
+            color: #fff;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .btn-home {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #d4af37;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Engrenagens Decorativas */
+        .gears-footer {
+            height: 60px;
+            background: #22150a;
+            border-top: 5px solid #110904;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            overflow: hidden;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">Art&Cachimbo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="historia.html">Nossa História</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="produtos.html">Produtos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="catalogo.html">Catálogo</a>
-                    </li>
-                </ul>
+
+    <header>
+        <nav>
+            <a href="index.html" class="nav-btn">HOME</a>
+            <a href="historia.html" class="nav-btn">HISTÓRIA</a>
+            <a href="produtos.html" class="nav-btn">PORTIFOLIO</a>
+            <img src="static/LgC.jpeg" alt="Logo Central" style="max-width: 200px; margin: 0 20px; border-radius: 10px; box-shadow: 0 0 15px rgba(0,0,0,0.8);">
+            <a href="catalogo.html" class="nav-btn">CATÁLOGO</a>
+            <a href="login.html" class="nav-btn">LOGIN</a>
+            <a href="register.html" class="nav-btn">REGISTRAR</a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <h2>PORTIFOLIO</h2>
+        <p>Nossos produtos: Cachimbos Raimundão da Jurema - Tradição e qualidade em cada peça.</p>
+        
+        <div class="grid-container">
+            <!-- Imagem 1 -->
+            <div class="grid-item">
+                <img src="static/1.jpeg" alt="Cachimbo 1">
+                <h3>Cachimbo Tradicional</h3>
+                <p>Design clássico com madeira nobre, perfeito para cerimônias tradicionais.</p>
+            </div>
+            
+            <!-- Imagem 2 -->
+            <div class="grid-item">
+                <img src="static/2.jpeg" alt="Cachimbo 2">
+                <h3>Cachimbo Exclusivo</h3>
+                <p>Peça única com detalhes artesanais e acabamento premium.</p>
+            </div>
+            
+            <!-- Imagem 3 -->
+            <div class="grid-item">
+                <img src="static/3.jpeg" alt="Cachimbo 3">
+                <h3>Cachimbo Cerimonial</h3>
+                <p>Ideal para rituais especiais, com simbologia sagrada.</p>
+            </div>
+            
+            <!-- Imagem 4 -->
+            <div class="grid-item">
+                <img src="static/4.jpeg" alt="Cachimbo 4">
+                <h3>Cachimbo Master</h3>
+                <p>Obra-prima artesanal, com detalhes exclusivos.</p>
+            </div>
+            
+            <!-- Imagem 5 -->
+            <div class="grid-item">
+                <img src="static/5.jpeg" alt="Cachimbo 5">
+                <h3>Cachimbo Espiritual</h3>
+                <p>Conexão profunda com as tradições espirituais.</p>
+            </div>
+            
+            <!-- Imagem 6 -->
+            <div class="grid-item">
+                <img src="static/6.jpeg" alt="Cachimbo 6">
+                <h3>Cachimbo Premium</h3>
+                <p>Qualidade superior, madeira selecionada e acabamento perfeito.</p>
             </div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4 mb-4">Nossos Produtos</h1>
-            <p class="lead">Artigos sagrados preparados com fé e dedicação</p>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="btn-home">🏠 Voltar para Home</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Products Section -->
-    <section class="py-5">
-        <div class="container">
-            <div class="row">
-                <!-- Product 1 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-primary category-badge">Preto Velho</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Pemba Sagrada</h5>
-                            <p class="card-text">Pemba consagrada para trabalhos espirituais e proteção.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 25,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 2 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-success category-badge">Oxossi</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Flecha de Oxossi</h5>
-                            <p class="card-text">Símbolo sagrado para conexão com o caçador divino.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 35,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-warning text-dark category-badge">Mestre</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Cajado do Mestre</h5>
-                            <p class="card-text">Cajado consagrado para trabalhos de cura e orientação.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 45,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-info category-badge">Maresia</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Conchas do Mar</h5>
-                            <p class="card-text">Conchas sagradas para rituais de Iemanjá e oxum.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 30,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-danger category-badge">Exu</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Tridente de Exu</h5>
-                            <p class="card-text">Tridente sagrado para trabalhos de abertura de caminhos.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 40,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 6 -->
-                <div class="col-md-4 mb-4">
-                    <div class="card product-card h-100">
-                        <span class="badge bg-secondary category-badge">Convencional</span>
-                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Produto">
-                        <div class="card-body">
-                            <h5 class="card-title">Velas Coloridas</h5>
-                            <p class="card-text">Conjunto de velas para diversas finalidades espirituais.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <span class="h5 text-primary">R$ 20,00</span>
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-shopping-cart"></i> Comprar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Order Section -->
-    <section class="py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h2>Como Fazer seu Pedido</h2>
-                    <ol>
-                        <li>Escolha os produtos desejados</li>
-                        <li>Clique em "Comprar" ou envie WhatsApp</li>
-                        <li>Confirme seu endereço e forma de pagamento</li>
-                        <li>Receba seus produtos com carinho e dedicação</li>
-                    </ol>
-                </div>
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Formas de Pagamento</h5>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check text-success"></i> Pix</li>
-                                <li><i class="fas fa-check text-success"></i> Transferência Bancária</li>
-                                <li><i class="fas fa-check text-success"></i> Cartão de Crédito (via link)</li>
-                            </ul>
-                            <a href="https://wa.me/55XXXXXXXXXXX" class="btn btn-success btn-lg w-100">
-                                <i class="fab fa-whatsapp"></i> Fazer Pedido via WhatsApp
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2024 Art&Cachimbo. Todos os direitos reservados.</p>
-            <div>
-                <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="text-white"><i class="fab fa-whatsapp fa-lg"></i></a>
-            </div>
-        </div>
+    <footer class="gears-footer">
+        <span style="color: #4a341b; font-size: 2rem;">⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️</span>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

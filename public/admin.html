@@ -231,7 +231,13 @@
             </div>
             
             <div class="admin-card">
-                <h3>📦 Produtos</h3>
+                <h3>� Visitas Únicas Hoje</h3>
+                <div class="number" id="unique-visits-today">0</div>
+                <div class="description">IPs únicos que visitaram hoje</div>
+            </div>
+            
+            <div class="admin-card">
+                <h3>� Produtos</h3>
                 <div class="number">6</div>
                 <div class="description">Produtos no portfólio</div>
             </div>
@@ -299,6 +305,7 @@
         function loadAdminData() {
             loadUsers();
             loadVisits();
+            loadUniqueVisitsToday();
             loadDate();
         }
 
@@ -333,6 +340,21 @@
             const visits = JSON.parse(localStorage.getItem('site_visits') || '[]');
             const totalVisits = visits.length;
             document.getElementById('visits-count').textContent = totalVisits;
+        }
+
+        // Carrega visitas únicas de hoje
+        function loadUniqueVisitsToday() {
+            const dailyVisits = JSON.parse(localStorage.getItem('daily_visits') || '{}');
+            const today = new Date().toDateString();
+            
+            let uniqueVisitsToday = 0;
+            Object.keys(dailyVisits).forEach(key => {
+                if (key.includes(today)) {
+                    uniqueVisitsToday++;
+                }
+            });
+            
+            document.getElementById('unique-visits-today').textContent = uniqueVisitsToday;
         }
 
         // Carrega data atual
@@ -385,6 +407,7 @@
         function clearVisits() {
             if (confirm('Tem certeza que deseja limpar todas as visitas?')) {
                 localStorage.removeItem('site_visits');
+                localStorage.removeItem('daily_visits'); // Limpa também o controle diário
                 alert('Visitas limpas com sucesso!');
                 loadVisits();
             }

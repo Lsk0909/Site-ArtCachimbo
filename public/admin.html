@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Art&Cachimbo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Georgia&display=swap" rel="stylesheet">
+    <style>
+        /* Reset e Fontes */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Georgia', serif; }
+        
+        body {
+            background-color: #1a0f00;
+            color: #f4e4bc;
+            background-image: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('static/textura_madeira.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        /* Fallback se a textura não carregar */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a0f00 0%, #0a0800 50%, #1a0f00 100%);
+            z-index: -1;
+        }
+
+        /* Header */
+        .admin-header {
+            background: rgba(74, 52, 27, 0.9);
+            border: 2px solid #8b5e34;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .admin-header h1 {
+            color: #d4af37;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .admin-header p {
+            color: #f4e4bc;
+            font-size: 1.1rem;
+        }
+
+        /* Container Principal */
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Grid de Cards */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .admin-card {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #8b5e34;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(5px);
+        }
+
+        .admin-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .admin-card h3 {
+            color: #d4af37;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .admin-card .number {
+            font-size: 3rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .admin-card .description {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        /* Tabela de Usuários */
+        .users-section {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #8b5e34;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .users-section h2 {
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .users-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #8b5e34;
+        }
+
+        .users-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            font-weight: bold;
+        }
+
+        .users-table td {
+            color: #f4e4bc;
+        }
+
+        .users-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Botões */
+        .btn-admin {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        .btn-admin:hover {
+            background: #b8941f;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        /* Ações Rápidas */
+        .quick-actions {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #8b5e34;
+            border-radius: 15px;
+            padding: 30px;
+            backdrop-filter: blur(5px);
+        }
+
+        .quick-actions h2 {
+            color: #d4af37;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        /* Rodapé */
+        .gears-footer {
+            height: 60px;
+            background: #22150a;
+            border-top: 5px solid #110904;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            overflow: hidden;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <h1>🔧 Painel Administrativo</h1>
+        <p>Bem-vindo, <span id="admin-name">Administrador</span></p>
+    </header>
+
+    <div class="admin-container">
+        <!-- Estatísticas -->
+        <div class="admin-grid">
+            <div class="admin-card">
+                <h3>👥 Usuários Cadastrados</h3>
+                <div class="number" id="users-count">0</div>
+                <div class="description">Total de usuários no sistema</div>
+            </div>
+            
+            <div class="admin-card">
+                <h3>👁️ Visitas ao Site</h3>
+                <div class="number" id="visits-count">0</div>
+                <div class="description">Total de visitas registradas</div>
+            </div>
+            
+            <div class="admin-card">
+                <h3>📦 Produtos</h3>
+                <div class="number">6</div>
+                <div class="description">Produtos no portfólio</div>
+            </div>
+            
+            <div class="admin-card">
+                <h3>📅 Hoje</h3>
+                <div class="number" id="today-date">--</div>
+                <div class="description">Data atual</div>
+            </div>
+        </div>
+
+        <!-- Tabela de Usuários -->
+        <div class="users-section">
+            <h2>👥 Usuários Cadastrados</h2>
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Data de Cadastro</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="users-tbody">
+                    <!-- Usuários serão carregados aqui -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Ações Rápidas -->
+        <div class="quick-actions">
+            <h2>⚡ Ações Rápidas</h2>
+            <div class="actions-grid">
+                <button class="btn-admin" onclick="exportUsers()">📥 Exportar Usuários</button>
+                <button class="btn-admin" onclick="exportVisits()">📊 Exportar Visitas</button>
+                <button class="btn-admin" onclick="clearVisits()">🗑️ Limpar Visitas</button>
+                <button class="btn-admin btn-danger" onclick="logout()">🚪 Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="gears-footer">
+        <span style="color: #4a341b; font-size: 2rem;">⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️ ⚙️</span>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Verifica se é administrador
+        function checkAdminAccess() {
+            const loggedIn = localStorage.getItem('loggedIn') === 'true';
+            const username = localStorage.getItem('username');
+            
+            if (!loggedIn || username !== 'Euller') {
+                alert('Acesso negado! Apenas administradores podem acessar esta página.');
+                window.location.href = 'index.html';
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Carrega dados do painel
+        function loadAdminData() {
+            loadUsers();
+            loadVisits();
+            loadDate();
+        }
+
+        // Carrega usuários
+        function loadUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const usersCount = document.getElementById('users-count');
+            const usersTbody = document.getElementById('users-tbody');
+            
+            usersCount.textContent = users.length;
+            
+            usersTbody.innerHTML = '';
+            users.forEach((user, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${user.nome}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td>${new Date(user.createdAt).toLocaleDateString('pt-BR')}</td>
+                    <td>
+                        <button class="btn-admin" onclick="editUser('${user.username}')">✏️</button>
+                        <button class="btn-admin btn-danger" onclick="deleteUser('${user.username}')">🗑️</button>
+                    </td>
+                `;
+                usersTbody.appendChild(row);
+            });
+        }
+
+        // Carrega visitas (simuladas)
+        function loadVisits() {
+            const visits = Math.floor(Math.random() * 1000) + 500; // Simulação
+            document.getElementById('visits-count').textContent = visits;
+        }
+
+        // Carrega data atual
+        function loadDate() {
+            const today = new Date().toLocaleDateString('pt-BR');
+            document.getElementById('today-date').textContent = today;
+        }
+
+        // Exportar usuários
+        function exportUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const csv = 'ID,Nome,Username,Email,Data de Cadastro\n' + 
+                users.map((user, index) => 
+                    `${index + 1},"${user.nome}","${user.username}","${user.email}","${new Date(user.createdAt).toLocaleDateString('pt-BR')}"`
+                ).join('\n');
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'usuarios.csv';
+            a.click();
+        }
+
+        // Exportar visitas
+        function exportVisits() {
+            alert('Função de exportar visitas em desenvolvimento.');
+        }
+
+        // Limpar visitas
+        function clearVisits() {
+            if (confirm('Tem certeza que deseja limpar todas as visitas?')) {
+                alert('Visas limpas com sucesso!');
+                loadVisits();
+            }
+        }
+
+        // Editar usuário
+        function editUser(username) {
+            alert(`Editar usuário: ${username}`);
+        }
+
+        // Deletar usuário
+        function deleteUser(username) {
+            if (confirm(`Tem certeza que deseja deletar o usuário ${username}?`)) {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const updatedUsers = users.filter(u => u.username !== username);
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+                loadUsers();
+                alert(`Usuário ${username} deletado com sucesso!`);
+            }
+        }
+
+        // Logout
+        function logout() {
+            if (confirm('Tem certeza que deseja sair?')) {
+                localStorage.removeItem('loggedIn');
+                localStorage.removeItem('username');
+                localStorage.removeItem('nome');
+                localStorage.removeItem('email');
+                window.location.href = 'index.html';
+            }
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            if (checkAdminAccess()) {
+                const nome = localStorage.getItem('nome') || 'Euller';
+                document.getElementById('admin-name').textContent = nome;
+                loadAdminData();
+                
+                // Atualiza dados a cada 30 segundos
+                setInterval(loadAdminData, 30000);
+            }
+        });
+    </script>
+
+</body>
+</html>

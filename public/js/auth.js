@@ -93,6 +93,33 @@ function showLogoutButton() {
         }
     }
     logoutBtn.style.display = 'inline-block';
+    
+    // Verifica se é o usuário Euller para mostrar o painel admin
+    const username = localStorage.getItem('username');
+    if (username === 'Euller') {
+        showAdminButton();
+    }
+}
+
+function showAdminButton() {
+    let adminBtn = document.getElementById('admin-btn');
+    if (!adminBtn) {
+        adminBtn = document.createElement('a');
+        adminBtn.id = 'admin-btn';
+        adminBtn.href = 'admin.html';
+        adminBtn.className = 'nav-btn';
+        adminBtn.textContent = 'PAINEL';
+        adminBtn.style.background = '#d4af37';
+        adminBtn.style.color = '#000';
+        
+        // Adiciona antes do botão de logout
+        const logoutBtn = document.getElementById('logout-btn');
+        const nav = document.querySelector('nav');
+        if (nav && logoutBtn) {
+            nav.insertBefore(adminBtn, logoutBtn);
+        }
+    }
+    adminBtn.style.display = 'inline-block';
 }
 
 function hideLogoutButton() {
